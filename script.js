@@ -102,7 +102,7 @@ for (let i = 0; i < totalFrames; i++) {
     frame.classList.add('frame');
 
     const img = document.createElement('img');
-img.src = "https://<malhar1271>.github.io/<Version-1>/images/Image-1.png";
+img.src = `images/${metadata[i].file}`;
 frame.appendChild(img);
     document.body.appendChild(frame);
 
