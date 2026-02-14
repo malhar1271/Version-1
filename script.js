@@ -11,7 +11,7 @@ const links = [];
 // --- METADATA FOR EACH IMAGE ---
 const metadata = [
   {
-    file: "Image-1.png",
+    file: "Images/Image-1.png",
     title: "Versa-Lite",
     date: "2024",
     description: "Designed for Finnish student life, it provides dynamic lighting in a dynamic work environment"
