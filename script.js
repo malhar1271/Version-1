@@ -102,7 +102,7 @@ for (let i = 0; i < totalFrames; i++) {
     frame.classList.add('frame');
 
     const img = document.createElement('img');
-const githubRoot = "https://malhar1271.github.io/version-1/"; // change this
+const githubRoot = "https://malhar1271.github.io/Version-1/"; // change this
 img.src = githubRoot + "images/" + metadata[i].file;
 frame.appendChild(img);
     document.body.appendChild(frame);
