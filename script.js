@@ -157,6 +157,9 @@ document.addEventListener('mouseup', () => {
 
 // Animate function
 function animate() {
+
+  canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
