@@ -222,7 +222,17 @@ f1.y = Math.max(topPadding, Math.min(canvas.height - fHeight, f1.y));
     });
 
     // Draw connecting lines
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#0a0a0a"; // same as body background
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+ctx.lineWidth = 1;
+links.forEach(([f1, f2]) => {
+    ctx.beginPath();
+    ctx.moveTo(f1.x + f1.width / 2, f1.y + f1.height / 2);
+    ctx.lineTo(f2.x + f2.width / 2, f2.y + f2.height / 2);
+    ctx.stroke();
+});
     ctx.strokeStyle = 'rgba(255,255,255,0.12)';
     ctx.lineWidth = 1;
     links.forEach(([f1, f2]) => {
