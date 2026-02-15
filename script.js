@@ -159,8 +159,8 @@ function animate() {
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
-    // Fill background
-    ctx.fillStyle = "#0a0a0a"; // dark background
+    // Fill the canvas with dark background
+    ctx.fillStyle = "#0a0a0a";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     frames.forEach(f1 => {
@@ -183,17 +183,15 @@ function animate() {
             // Repulsion from all other frames
             frames.forEach(f2 => {
                 if (f1 === f2) return;
-
                 const dx = (f1.x + fWidth/2) - (f2.x + f2.width * scale / 2);
                 const dy = (f1.y + fHeight/2) - (f2.y + f2.height * scale / 2);
                 const dist = Math.hypot(dx, dy) || 1;
-
                 const force = repulsion / (dist * dist);
                 fx += (dx / dist) * force;
                 fy += (dy / dist) * force;
             });
 
-            // Slight spring toward center to avoid edges
+            // Slight spring toward center
             const dxCenter = centerX - (f1.x + fWidth / 2);
             const dyCenter = centerY - (f1.y + fHeight / 2);
             fx += dxCenter * spring;
@@ -210,9 +208,10 @@ function animate() {
             f1.y = mouseY - offsetY;
         }
 
-        // Keep inside canvas
+        // Keep inside canvas with a top margin (e.g., 60px)
+        const topMargin = 60;
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
-        f1.y = Math.max(0, Math.min(canvas.height - fHeight, f1.y));
+        f1.y = Math.max(topMargin, Math.min(canvas.height - fHeight, f1.y));
 
         f1.style.left = f1.x + 'px';
         f1.style.top = f1.y + 'px';
