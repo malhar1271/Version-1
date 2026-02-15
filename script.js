@@ -161,7 +161,7 @@ function animate() {
   canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    const centerY = canvas.height / 2 + 200;
 
     frames.forEach(f1 => {
         // Determine scale based on distance from center
@@ -221,8 +221,7 @@ function animate() {
     });
 
     // Draw connecting lines
-    ctx.fillStyle = "#0a0a0a"; // same as body background
-ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'rgba(255,255,255,0.12)';
     ctx.lineWidth = 1;
     links.forEach(([f1, f2]) => {
