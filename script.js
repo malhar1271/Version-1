@@ -155,13 +155,13 @@ document.addEventListener('mouseup', () => {
     activeFrame = null;
 });
 
-// Animate function
 function animate() {
-
-  canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2 + 200;
+    const centerY = canvas.height / 2;
+
+    // Fill background
+    ctx.fillStyle = "#0a0a0a"; // dark background
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     frames.forEach(f1 => {
         // Determine scale based on distance from center
@@ -210,7 +210,6 @@ function animate() {
             f1.y = mouseY - offsetY;
         }
 
-
         // Keep inside canvas
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
         f1.y = Math.max(0, Math.min(canvas.height - fHeight, f1.y));
@@ -221,7 +220,6 @@ function animate() {
     });
 
     // Draw connecting lines
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'rgba(255,255,255,0.12)';
     ctx.lineWidth = 1;
     links.forEach(([f1, f2]) => {
