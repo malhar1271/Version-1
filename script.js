@@ -161,7 +161,7 @@ function animate() {
   canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2 + 200;
+    const centerY = canvas.height / 2;
 
     frames.forEach(f1 => {
         // Determine scale based on distance from center
@@ -213,7 +213,8 @@ function animate() {
 
         // Keep inside canvas
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
-        f1.y = Math.max(0, Math.min(canvas.height - fHeight, f1.y));
+        const topPadding = 80; // minimum distance from top
+f1.y = Math.max(topPadding, Math.min(canvas.height - fHeight, f1.y));
 
         f1.style.left = f1.x + 'px';
         f1.style.top = f1.y + 'px';
