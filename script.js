@@ -213,7 +213,7 @@ function animate() {
 
         // Keep inside canvas
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
-        const topPadding = 80; // minimum distance from top
+        const topPadding = 80;
 f1.y = Math.max(topPadding, Math.min(canvas.height - fHeight, f1.y));
 
         f1.style.left = f1.x + 'px';
