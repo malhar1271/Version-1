@@ -210,6 +210,8 @@ function animate() {
             f1.y = mouseY - offsetY;
         }
 
+      const topPadding = 80; // how much space from the top you want
+
         // Keep inside canvas
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
         f1.y = Math.max(0, Math.min(canvas.height - fHeight, f1.y));
