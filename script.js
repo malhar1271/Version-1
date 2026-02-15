@@ -155,13 +155,13 @@ document.addEventListener('mouseup', () => {
     activeFrame = null;
 });
 
+// Animate function
 function animate() {
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
 
-    // Fill the canvas with dark background
-    ctx.fillStyle = "#0a0a0a";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2 + 200;
 
     frames.forEach(f1 => {
         // Determine scale based on distance from center
@@ -183,15 +183,17 @@ function animate() {
             // Repulsion from all other frames
             frames.forEach(f2 => {
                 if (f1 === f2) return;
+
                 const dx = (f1.x + fWidth/2) - (f2.x + f2.width * scale / 2);
                 const dy = (f1.y + fHeight/2) - (f2.y + f2.height * scale / 2);
                 const dist = Math.hypot(dx, dy) || 1;
+
                 const force = repulsion / (dist * dist);
                 fx += (dx / dist) * force;
                 fy += (dy / dist) * force;
             });
 
-            // Slight spring toward center
+            // Slight spring toward center to avoid edges
             const dxCenter = centerX - (f1.x + fWidth / 2);
             const dyCenter = centerY - (f1.y + fHeight / 2);
             fx += dxCenter * spring;
@@ -208,10 +210,10 @@ function animate() {
             f1.y = mouseY - offsetY;
         }
 
-        // Keep inside canvas with a top margin (e.g., 60px)
-        const topMargin = 60;
+
+        // Keep inside canvas
         f1.x = Math.max(0, Math.min(canvas.width - fWidth, f1.x));
-        f1.y = Math.max(topMargin, Math.min(canvas.height - fHeight, f1.y));
+        f1.y = Math.max(0, Math.min(canvas.height - fHeight, f1.y));
 
         f1.style.left = f1.x + 'px';
         f1.style.top = f1.y + 'px';
@@ -219,6 +221,7 @@ function animate() {
     });
 
     // Draw connecting lines
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'rgba(255,255,255,0.12)';
     ctx.lineWidth = 1;
     links.forEach(([f1, f2]) => {
