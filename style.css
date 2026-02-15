@@ -7,9 +7,13 @@ html, body {
 }
 canvas {
   display: block;
-  position: absolute;
+  position: fixed;   /* stays fixed behind everything */
   top: 0;
   left: 0;
+  width: 100vw;      /* full viewport */
+  height: 100vh;     /* full viewport */
+  background-color: #0a0a0a;  /* dark background */
+  z-index: 0;        /* behind frames */
 }
 
 .frame {
